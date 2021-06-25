@@ -1,0 +1,279 @@
+
+Roll no:10bit034
+ANAGRAM:pg no:1
+#include<stdio.h>
+#include<string.h>
+int count(char,char*);
+int anagram(char*,char*);
+main()
+{
+	char s[10][10];
+	char op[10][10];
+	int c[10],i=0,j,k,l,f=0,g=0;
+	printf("\nEnter the strings:");
+	for(i=0;i<10;i++)
+		c[i]=0;
+	for(i=0;i<5;i++)
+	{
+		scanf("%s",s[i]);
+	}//while(s[i]!="*");
+	clrscr();
+	for(j=0;j<i;j++)
+	{        f=0;
+		for(k=0;k<i;k++)
+		{
+			if(j!=k && strlen(s[j])==strlen(s[j]) )
+			{
+				f=anagram(s[j],s[k]);
+				if(f==1)
+				{       c[k]++;
+					//printf("%s",s[k]);
+					if(c[k]==1)
+						printf("\n%s",s[k]);
+						//strcpy(op[g++],s[k]);
+				}
+			}
+		}
+	}
+	//for(k=0;k<g;k++)
+	  //	printf("%s ",op[k]) ;
+	getch();
+}
+int anagram(char* a,char* b)
+{
+	int l=strlen(a);
+	int i=0,j=0;
+	int c=0;
+	int c1,c2;
+	for(i=0;i<l;i++)
+	{        c=0;
+		 c1=count(a[i],a);
+		 c2=count(a[i],b);
+		 if(c1!=c2)
+			return 0;
+		for(j=0;j<l;j++)
+		{
+			if(a[i]==b[j])
+			{
+				c++;
+				//continue;
+			}
+			//else
+			 //	return 0;
+		}
+		if(c!=c2)
+			return 0;
+	}
+	return 1;
+}
+int count(char a,char* s)
+{
+	int c=0,i;
+	for(i=0;i<strlen(s);i++)
+		if(s[i]==a)
+			c++;
+	return c;
+}
+
+MAX SUM IN CONTIGUOUS ARRAY:pg no:2
+
+#include<stdio.h>
+main()
+{
+	int i,k=0,g=0,d=0,max=0,c=0;
+	int sum=0;
+	int sub[10];
+	int s[10]={-8,12,15,1,-10,1};
+	clrscr();
+	for(i=0;i<10;i++)
+	{
+		if(s[i]>0 && s[i+1]>0)
+		{
+			sub[k++]=s[i];
+			sub[k++]=s[++i];
+			if(s[i+1]>0)
+				sub[k++]=s[++i];
+			if(s[i+1]>0)
+				sub[k++]=s[++i];
+		}
+	   
+	}
+	
+	for(i=0;i<k;i++)
+	{
+		sum=sum+sub[i];
+	}
+	
+	printf("\nArray elements:");
+      
+	for(i=0;i<k;i++)
+	{
+		printf("\t%d",sub[i]);
+	}
+	printf("\nmax sum:%d",sum);
+	getch();
+
+}
+
+MAX OCCURRENCE OF CHARACTER AND ITS REMOVAL:pg no:3
+
+#include<stdio.h>
+#include<string.h>
+int count(char,char*);
+int remove1(int*);
+int search(char,char*);
+main()
+{
+	char s[20];
+	int i,j=0,c,c1,x,h,g=0;
+	int k[20];
+	char f[20];
+	clrscr();
+	for(x=0;x<20;x++)
+		k[x]=0;
+	printf("\n enter the string:");
+	gets(s);
+	for(i=0;i<strlen(s);i++)
+	{
+		if(i==0)
+			f[j++]=s[i];
+		c=search(s[i],f);
+		if(c!=1)
+			f[j++]=s[i];
+	}
+	for(i=0;i<j;i++)
+	{
+		c1=count(f[i],s);
+		k[g++]=c1;
+		printf("\nNumber of %c : %d",f[i],c1);
+	}
+	h=remove1(&k);
+	printf("\nmax char: %c",f[h]);
+	printf("\n");
+	for(i=0;i<strlen(s);i++)
+	{
+		if(s[i]==f[h])
+		       ++i;
+		if(s[i]==f[h])
+			++i;
+		printf("%c",s[i]);
+	}
+	getch();
+}
+int remove1(int* k)
+{
+       int c=0,max=0,i;
+	for(i=0;i<20;i++)
+	{
+		if(max<k[i])
+		{
+			max=k[i];
+			c=i;
+		}
+	}
+	printf("\n max index:%d %d",max,c);
+	return c;
+}
+int search(char a,char* s)
+{
+	int c=0,i;
+	for(i=0;i<strlen(s);i++)
+		if(s[i]==a)
+			c++;
+	if(c==1)
+		return 1;
+	else
+		return 0;
+}
+int count(char a,char* s)
+{
+	int c=0,i;
+	for(i=0;i<strlen(s);i++)
+		if(s[i]==a)
+			c++;
+	return c;
+}
+
+TRAIN TICKET INFORMATION: pg no 5.1
+#include<stdio.h>
+#include<string.h>
+typedef struct passenger
+{
+	char name[20];
+	int age;
+	int seatno;
+	char berth[10];
+	int pnr;
+	int trainno;
+	char train[20];
+	char date[20];
+}pass;
+void pnr(int,pass*);
+void train(int,pass*);
+void berth(char*,pass*);
+main()
+{
+	pass p[3];
+	clrscr();
+	strcpy(p[0].name,"ABC");
+	p[0].age=30;
+	p[0].seatno=1;
+	strcpy(p[0].berth,"LOWER");
+	p[0].pnr=1234;
+	p[0].trainno=1266;
+	strcpy(p[0].train,"Podigai");
+	strcpy(p[0].date,"30.8.13");
+	strcpy(p[1].name,"BCA");
+	p[1].age=30;
+	p[1].seatno=1;
+	strcpy(p[1].berth,"LOWER");
+	p[1].pnr=1234;
+	p[1].trainno=1266;
+	strcpy(p[1].train,"Podigai");
+	strcpy(p[1].date,"30.8.13");
+	strcpy(p[2].name,"CBA");
+	p[2].age=30;
+	p[2].seatno=1;
+	strcpy(p[2].berth,"UPPER");
+	p[2].pnr=1235;
+	p[2].trainno=1265;
+	strcpy(p[2].train,"Podigai");
+	strcpy(p[2].date,"30.8.13");
+	printf("\nPassengers with lower berth:");
+	berth("LOWER",&p);
+	printf("\nPassengers with upper berth:");
+	berth("UPPER",&p);
+	printf("\nPassengers with pnr no 1234:");
+	pnr(1234,&p);
+	printf("\nPassengers with train no 1266:");
+	train(1266,&p);
+	getch();
+}
+void berth(char* s,pass* p)
+{
+	int i=0;
+	for(i=0;i<3;i++)
+	{
+		if(strcmp(p[i].berth,s)==0)
+			printf("\n%s",p[i].name);
+	}
+}
+void pnr(int s,pass* p)
+{
+	int i=0;
+	for(i=0;i<3;i++)
+	{
+		if(p[i].pnr==s)
+			printf("\n%s",p[i].name);
+	}
+}
+void train(int s,pass* p)
+{
+	int i=0;
+	for(i=0;i<3;i++)
+	{
+		if(p[i].trainno==s)
+			printf("\n%s",p[i].name);
+	}
+}
+
