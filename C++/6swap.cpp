@@ -15,7 +15,7 @@ int main()
     }
     for (int j = 0; j < size;j++){
         int temp = 0;
-        if (j<size-3){
+        if (j<=size-3){
             temp = num[j];
             num[j] = num[j + 2];
             num[j + 2] = temp;
