@@ -5,7 +5,7 @@ void fastIO(){
      ios_base::sync_with_stdio(false);
      cin.tie(NULL);
 }
-void simple(int arr[20],int size){
+void simple_kadanealgo(int arr[20],int size){
     int sum = 0;
     int maxele = arr[0];
     for (int i = 0; i < size;i++)
@@ -29,6 +29,6 @@ int main()
     for (int i = 0; i < sizeA;i++){
         cin >> arr[i];
     }
-    simple(arr,sizeA);
+    simple_kadanealgo(arr,sizeA);
     return 0;
 }
